@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import Exponent from 'exponent';
 import {
   AppRegistry,
   StyleSheet,
@@ -12,22 +13,33 @@ import {
   View
 } from 'react-native';
 
+// var Login = require('./Login');
+import Login from './Login';
+
 export default class GithubBrowser extends Component {
+  constructor(props){
+    super(props);
+    this.onLogin = this.onLogin.bind(this);
+    this.state = {
+      isLoggedIn: false
+    };
+  }
+  onLogin = () => {
+    this.setState({isLoggedIn: true});
+    // console.log('Logged In');
+  }
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
+    if(this.state.isLoggedIn){
+      return (
+        <View style={styles.container}>
+          <Text style={styles.welcome}>Welcome!</Text>
+        </View>
+      );
+    } else {
+      return (
+        <Login onLogin={this.onLogin}/>
+      );
+    }
   }
 }
 
@@ -49,5 +61,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+Exponent.registerRootComponent(GithubBrowser);
 
 AppRegistry.registerComponent('GithubBrowser', () => GithubBrowser);

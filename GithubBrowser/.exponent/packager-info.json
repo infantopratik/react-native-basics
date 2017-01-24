@@ -1,0 +1,8 @@
+{
+  "exponentServerPort": 19005,
+  "packagerPort": 19007,
+  "packagerPid": 7252,
+  "exponentServerNgrokUrl": "https://pw-sk2.infanto.githubbrowser.exp.direct",
+  "packagerNgrokUrl": "https://packager.pw-sk2.infanto.githubbrowser.exp.direct",
+  "ngrokPid": 8156
+}
