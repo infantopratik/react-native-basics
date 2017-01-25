@@ -7,6 +7,7 @@ import {
   View,
   TabBarIOS
 } from 'react-native';
+import Feed from './Feed';
 
 export default class AppContainer extends Component {
   constructor(props){
@@ -22,13 +23,15 @@ export default class AppContainer extends Component {
         <TabBarIOS.Item
           title = "Feed"
           selected = {this.state.selectedTab == 'feed'}
+          icon = {require('./img/inbox.png')}
           onPress = { () => this.setState({ selectedTab: 'feed' }) }
         >
-          <Text style = {styles.welcome}>Tab 1</Text>
+          <Feed />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           title = "Search"
           selected = {this.state.selectedTab == 'search'}
+          icon = {require('./img/search.png')}
           onPress = { () => this.setState({ selectedTab: 'search' }) }
         >
           <Text style = {styles.welcome}>Tab 2 BOOYAH</Text>

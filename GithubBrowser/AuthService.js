@@ -18,7 +18,7 @@ class AuthService {
         return cb();
       }
 
-      var zippedObj = lodash.zipObject(val);
+      var zippedObj = lodash.fromPairs(val);
 
       if(!zippedObj[AuthKey]){
         return cb();
@@ -30,7 +30,7 @@ class AuthService {
         },
         user : JSON.parse(zippedObj[UserKey])
       }
-
+      
       return cb(null, authInfo);
     })
   }
@@ -46,7 +46,7 @@ class AuthService {
     })
     .then((response) => {
       if(response.status>=200 && response.status<=400){
-        return response
+        return response;
       }
 
       throw {

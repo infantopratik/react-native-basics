@@ -65,7 +65,6 @@ export default class Login extends Component {
       this.setState(Object.assign({
         showProgress: false
       }, results));
-      // console.log('RESULTS', results);
 
       if(results.success && this.props.onLogin){
         this.props.onLogin();
