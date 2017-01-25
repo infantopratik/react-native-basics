@@ -10,30 +10,54 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ActivityIndicator
 } from 'react-native';
 
 // var Login = require('./Login');
 import Login from './Login';
+import AuthService from './AuthService';
+import AppContainer from './AppContainer';
 
 export default class GithubBrowser extends Component {
   constructor(props){
     super(props);
     this.onLogin = this.onLogin.bind(this);
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+      checkingAuth: true
     };
   }
   onLogin = () => {
     this.setState({isLoggedIn: true});
     // console.log('Logged In');
   }
+
+  componentDidMount() {
+    AuthService.getAuthInfo((err, authInfo)=>{
+      this.setState({
+        checkingAuth: false,
+        isLoggedIn: authInfo != null
+      })
+    });
+  }
+
   render() {
-    if(this.state.isLoggedIn){
+    if(this.state.checkingAuth){
       return (
         <View style={styles.container}>
-          <Text style={styles.welcome}>Welcome!</Text>
+          <ActivityIndicator
+            animating = {true}
+            size = "large"
+            style = {styles.loader}
+          />
         </View>
+      )
+    }
+
+    if(this.state.isLoggedIn){
+      return (
+        <AppContainer />        
       );
     } else {
       return (
