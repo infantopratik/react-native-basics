@@ -5,9 +5,11 @@ import {
   StyleSheet,
   Text,
   View,
-  TabBarIOS
+  TabBarIOS,
+  NavigatorIOS
 } from 'react-native';
 import Feed from './Feed';
+import Search from './Search';
 
 export default class AppContainer extends Component {
   constructor(props){
@@ -19,14 +21,25 @@ export default class AppContainer extends Component {
 
   render() {
     return (
-      <TabBarIOS style = {styles.container}>
+      <TabBarIOS style = {styles.container} barTintColor = '#48bbec' tintColor = '#fff' unselectedItemTintColor = '#d7d7d7' unselectedTintColor  = '#d7d7d7'>
         <TabBarIOS.Item
           title = "Feed"
           selected = {this.state.selectedTab == 'feed'}
           icon = {require('./img/inbox.png')}
           onPress = { () => this.setState({ selectedTab: 'feed' }) }
         >
-          <Feed />
+          <NavigatorIOS
+            style = {{
+              flex: 1
+            }}
+            barTintColor = '#48bbec'
+            tintColor = '#fff'
+            titleTextColor = '#fff'
+            initialRoute = {{
+              component: Feed,
+              title: 'Feed'
+            }}
+          />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           title = "Search"
@@ -34,7 +47,18 @@ export default class AppContainer extends Component {
           icon = {require('./img/search.png')}
           onPress = { () => this.setState({ selectedTab: 'search' }) }
         >
-          <Text style = {styles.welcome}>Tab 2 BOOYAH</Text>
+          <NavigatorIOS
+            style = {{
+              flex: 1
+            }}
+            barTintColor = '#48bbec'
+            tintColor = '#fff'
+            titleTextColor = '#fff'
+            initialRoute = {{
+              component: Search,
+              title: 'Search'
+            }}
+          />
         </TabBarIOS.Item>
       </TabBarIOS>
     );
