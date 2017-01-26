@@ -31,13 +31,13 @@ export default class PushPayload extends Component {
       <View style = {{
         flex: 1,
         justifyContent: 'center',
-        borderColor: '#d7d7d7',
+        borderColor: '#666',
         borderBottomWidth: 1,
         paddingTop: 20,
         paddingBottom: 20,
         padding: 10
       }}>
-        <Text><Text style = {styles.bold}>{rowData.sha.substring(0,6)}</Text> - {rowData.message}</Text>
+        <Text style = {{ color: 'white' }}><Text style = {styles.bold}>{rowData.sha.substring(0,6)}</Text> - {rowData.message}</Text>
       </View>
     );
   }
@@ -48,7 +48,8 @@ export default class PushPayload extends Component {
         flex: 1,
         paddingTop: 80,
         justifyContent: 'flex-start',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#080d14'
       }}>
         <Image
           source = {{uri: this.state.pushEvent.actor.avatar_url}}
@@ -62,20 +63,22 @@ export default class PushPayload extends Component {
         <Text style = {{
           paddingTop: 20,
           paddingBottom: 20,
-          fontSize: 20
+          fontSize: 20,
+          color: 'white'
         }}>
           {moment(this.state.pushEvent.created_at).fromNow()}
         </Text>
 
-        <Text><Text style = {styles.bold}>{this.state.pushEvent.actor.login}</Text> pushed to</Text>
+        <Text style = {{ color: 'white' }}><Text style = {styles.bold}>{this.state.pushEvent.actor.login}</Text> pushed to</Text>
         <Text style = {styles.bold}>{this.state.pushEvent.payload.ref.replace('refs/heads', '')}</Text>
-        <Text>at <Text style = {styles.bold} >{this.state.pushEvent.repo.name}</Text></Text>
+        <Text style = {{ color: 'white' }}>at <Text style = {styles.bold} >{this.state.pushEvent.repo.name}</Text></Text>
 
         <Text style = {{
           paddingTop: 40,
-          fontSize: 20
+          fontSize: 20,
+          color: 'white'
         }}>
-          {this.state.pushEvent.payload.commits.length} Commits
+          {this.state.pushEvent.payload.commits.length} Commit(s)
         </Text>
 
         <ListView
@@ -92,6 +95,7 @@ export default class PushPayload extends Component {
 const styles = StyleSheet.create({
   bold: {
     fontWeight: '800',
-    fontSize: 16
+    fontSize: 16,
+    color: 'white'
   }
 });

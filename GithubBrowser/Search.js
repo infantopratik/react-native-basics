@@ -23,7 +23,10 @@ export default class Search extends Component {
             searchQuery: text
           })}
           style={styles.input}
-          placeholder="Search Query" />
+          placeholder="Search Query"
+          placeholderTextColor = "#ddd"
+          selectionColor = "white"
+          keyboardAppearance = 'dark' />
         <TouchableHighlight
           onPress = {this.onSearchPressed.bind(this)}
           style={styles.button}>
@@ -52,6 +55,7 @@ const styles = StyleSheet.create({
     paddingTop: 100,
     alignItems: 'center',
     padding: 10,
+    backgroundColor: '#080d14'
     // justifyContent: 'center'
   },
   logo: {
@@ -68,7 +72,9 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#48bbec'
+    borderColor: '#48bbec',
+    borderRadius: 3,
+    color: "white"
   },
   button: {
     height: 50,
@@ -76,11 +82,11 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     marginTop: 10,
     justifyContent: 'center',
-    borderRadius: 5
+    borderRadius: 3
   },
   buttonText: {
     fontSize: 22,
-    color: '#fff',
+    color: '#080d14',
     alignSelf: 'center'
   },
   loader: {

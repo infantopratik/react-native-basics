@@ -75,8 +75,9 @@ export default class Feed extends Component {
           flexDirection: 'row',
           padding: 20,
           alignItems: 'center',
-          borderColor: '#D7D7D7',
-          borderBottomWidth: 1
+          borderColor: '#000',
+          borderBottomWidth: 1,
+          backgroundColor: '#080d14'
         }}>
           <Image
             source = {{uri: rowData.actor.avatar_url}}
@@ -90,10 +91,10 @@ export default class Feed extends Component {
             style={{
               paddingLeft: 20
             }}>
-            <Text>{moment(rowData.created_at).fromNow()}</Text>
-            <Text><Text style = {{ fontWeight: '600' }}>{rowData.actor.login}</Text> pushed to </Text>
-            <Text>{rowData.payload.ref.replace('refs/heads/', '')}</Text>
-            <Text>at <Text style={{ fontWeight: '600' }}>{rowData.repo.name}</Text></Text>
+            <Text style = {{ 'color': 'white' }} >{moment(rowData.created_at).fromNow()}</Text>
+            <Text style = {{ 'color': 'white' }} ><Text style = {{ fontWeight: '600' }}>{rowData.actor.login}</Text> pushed to </Text>
+            <Text style = {{ 'color': 'white' }} >{rowData.payload.ref.replace('refs/heads/', '')}</Text>
+            <Text style = {{ 'color': 'white' }} >at <Text style={{ fontWeight: '600' }}>{rowData.repo.name}</Text></Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -105,7 +106,8 @@ export default class Feed extends Component {
       return (
         <View style = {{
           flex: 1,
-          justifyContent: 'center'
+          justifyContent: 'center',
+          backgroundColor: '#080d14'
         }}>
           <ActivityIndicator
             animating = {true}
@@ -118,15 +120,13 @@ export default class Feed extends Component {
     return (
       <View style={{
         flex: 1,
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        backgroundColor: '#080d14'
       }}>
         <ListView
-          style = {{
-            paddingTop: 50,
-            paddingBottom: 50
-          }}
           dataSource = {this.state.dataSource}
           renderRow = {this.renderRow.bind(this)}
+          automaticallyAdjustContentInsets = {false}
         >
 
         </ListView>

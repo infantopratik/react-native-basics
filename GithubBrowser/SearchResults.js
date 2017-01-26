@@ -52,13 +52,14 @@ export default class SearchResults extends Component {
     return (
       <View style={{
         padding: 20,
-        borderColor: '#D7D7D7',
+        borderColor: '#000',
         borderBottomWidth: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#080d14'
       }}>
         <Text style = {{
           fontSize: 20,
-          fontWeight: '600'
+          fontWeight: '600',
+          color: 'white'
         }}>
           {rowData.full_name}
         </Text>
@@ -92,7 +93,8 @@ export default class SearchResults extends Component {
       return (
         <View style = {{
           flex: 1,
-          justifyContent: 'center'
+          justifyContent: 'center',
+          backgroundColor: '#080d14'
         }}>
           <ActivityIndicator
             animating = {true}
@@ -105,14 +107,13 @@ export default class SearchResults extends Component {
     return (
       <View style={{
         flex: 1,
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        backgroundColor: '#080d14'
       }}>
         <ListView
-          style = {{
-            paddingTop: 50
-          }}
           dataSource = {this.state.dataSource}
           renderRow = {this.renderRow.bind(this)}
+          automaticallyAdjustContentInsets = {false}
         >
 
         </ListView>
@@ -133,6 +134,7 @@ const styles = StyleSheet.create({
   },
    repoCellLabel: {
      paddingTop: 10,
-     textAlign: 'center'
+     textAlign: 'center',
+     color: 'white'
    }
 });

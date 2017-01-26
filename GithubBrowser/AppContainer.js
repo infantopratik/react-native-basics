@@ -6,22 +6,26 @@ import {
   Text,
   View,
   TabBarIOS,
-  NavigatorIOS
+  NavigatorIOS,
+  AsyncStorage
 } from 'react-native';
 import Feed from './Feed';
 import Search from './Search';
+import Login from './Login';
+import GithubBrowser from './index';
 
 export default class AppContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      selectedTab: 'feed'
+      selectedTab: 'feed',
+      isLogoutPressed: false
     };
   }
 
   render() {
     return (
-      <TabBarIOS style = {styles.container} barTintColor = '#48bbec' tintColor = '#fff' unselectedItemTintColor = '#d7d7d7' unselectedTintColor  = '#d7d7d7'>
+      <TabBarIOS style = {styles.container} barTintColor = '#080d14' tintColor = 'green'>
         <TabBarIOS.Item
           title = "Feed"
           selected = {this.state.selectedTab == 'feed'}
@@ -30,9 +34,10 @@ export default class AppContainer extends Component {
         >
           <NavigatorIOS
             style = {{
-              flex: 1
+              flex: 1,
+              backgroundColor: '#2b394f'
             }}
-            barTintColor = '#48bbec'
+            barTintColor = '#080d14'
             tintColor = '#fff'
             titleTextColor = '#fff'
             initialRoute = {{
@@ -51,7 +56,7 @@ export default class AppContainer extends Component {
             style = {{
               flex: 1
             }}
-            barTintColor = '#48bbec'
+            barTintColor = '#080d14'
             tintColor = '#fff'
             titleTextColor = '#fff'
             initialRoute = {{
@@ -70,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#2b394f'
   },
   welcome: {
     fontSize: 20,
